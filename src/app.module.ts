@@ -10,7 +10,14 @@ import { FoodTypeModule } from './food-type/food-type.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot('mongodb://localhost:27017/project-ii'),
+    MongooseModule.forRoot(
+      `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}`,
+      {
+        dbName: process.env.DB_NAME,
+        user: process.env.DB_USER,
+        pass: process.env.DB_PASS,
+      },
+    ),
     FoodModule,
     IngredientModule,
     FoodTypeModule,

@@ -10,7 +10,7 @@ export class FoodService {
   getFoods(obj = {}) {
     return this.foodModel
       .find(obj)
-      .populate('ingredients', 'name')
+      .populate('ingredients')
       .populate('foodType');
   }
 
